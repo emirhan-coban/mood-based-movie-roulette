@@ -62,7 +62,7 @@ class MovieCard extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     movie.overview!,
-                    maxLines: 8, // Daha uzun açıklama göster
+                    maxLines: 8,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 14,

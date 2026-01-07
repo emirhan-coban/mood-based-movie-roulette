@@ -15,7 +15,6 @@ class JournalScreen extends StatefulWidget {
 class _JournalScreenState extends State<JournalScreen> {
   final Set<String> _selectedKeywords = {};
 
-  // Kategori bazlı kelimeler (TR/EN karışık kısa listeler)
   static const Map<String, List<String>> _keywordCategories = {
     '🎉 Keyif & Komedi': [
       'mutlu',
@@ -198,7 +197,7 @@ class _JournalScreenState extends State<JournalScreen> {
                                   },
                                   selectedColor: Theme.of(
                                     context,
-                                  ).primaryColor.withOpacity(0.3),
+                                  ).primaryColor.withValues(alpha: 0.3),
                                   checkmarkColor: Theme.of(
                                     context,
                                   ).primaryColor,
@@ -208,7 +207,7 @@ class _JournalScreenState extends State<JournalScreen> {
                             const SizedBox(height: 8),
                           ],
                         );
-                      }).toList(),
+                      }),
                     ],
                   ),
                 ),
@@ -219,7 +218,7 @@ class _JournalScreenState extends State<JournalScreen> {
                   color: Theme.of(context).scaffoldBackgroundColor,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 4,
                       offset: const Offset(0, -2),
                     ),

@@ -1,4 +1,3 @@
-/// Movie model representing a film from TMDB API
 class Movie {
   final int id;
   final String title;
@@ -52,12 +51,10 @@ class Movie {
     };
   }
 
-  String get fullPosterUrl => posterPath != null
-      ? 'https://image.tmdb.org/t/p/w500$posterPath'
-      : '';
+  String get fullPosterUrl =>
+      posterPath != null ? 'https://image.tmdb.org/t/p/w500$posterPath' : '';
 
   String get fullBackdropUrl => backdropPath != null
       ? 'https://image.tmdb.org/t/p/w1280$backdropPath'
       : '';
 }
-

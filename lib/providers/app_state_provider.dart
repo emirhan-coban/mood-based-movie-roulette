@@ -4,7 +4,6 @@ import '../services/rating_service.dart';
 import '../services/tmdb_service.dart';
 import '../services/storage_service.dart';
 
-/// App state provider using ChangeNotifier for state management
 class AppStateProvider extends ChangeNotifier {
   final RatingService _huggingFaceService = RatingService();
   final TMDBService _tmdbService = TMDBService();
@@ -24,7 +23,6 @@ class AppStateProvider extends ChangeNotifier {
     _loadJournalHistory();
   }
 
-  /// Load journal history from storage
   Future<void> _loadJournalHistory() async {
     try {
       _journalHistory = await _storageService.getAllJournalEntries();
@@ -35,7 +33,6 @@ class AppStateProvider extends ChangeNotifier {
     }
   }
 
-  /// Analyze selected keywords and get movie recommendation
   Future<void> analyzeKeywordsAndRecommend(
     List<String> selectedKeywords,
   ) async {
@@ -70,13 +67,11 @@ class AppStateProvider extends ChangeNotifier {
     }
   }
 
-  /// Clear current entry
   void clearCurrentEntry() {
     _currentEntry = null;
     notifyListeners();
   }
 
-  /// Clear error message
   void clearError() {
     _errorMessage = null;
     notifyListeners();

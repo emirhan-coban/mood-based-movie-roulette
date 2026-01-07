@@ -1,4 +1,3 @@
-/// Mood analysis result from sentiment analysis API
 enum MoodType {
   happy,
   sad,

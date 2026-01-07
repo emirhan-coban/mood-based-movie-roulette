@@ -3,23 +3,28 @@ import 'package:http/http.dart' as http;
 import '../models/movie.dart';
 import '../utils/api_keys.dart';
 
-/// Service for interacting with The Movie Database (TMDB) API
 class TMDBService {
   final String baseUrl = 'https://api.themoviedb.org/3';
   final String apiKey = ApiKeys.tmdbApiKey;
 
-  /// Search for movies by genre and mood
   Future<List<Movie>> searchMoviesByMood({
     required String genre,
     required bool needsUplifting,
     int page = 1,
   }) async {
     try {
-      // Map mood to genre IDs
       final genreId = _getGenreId(genre, needsUplifting);
 
+      // Sadece yüksek puanlı ve popüler filmleri getir
       final url = Uri.parse(
-        '$baseUrl/discover/movie?api_key=$apiKey&with_genres=$genreId&sort_by=popularity.desc&page=$page&language=tr-TR',
+        '$baseUrl/discover/movie?'
+        'api_key=$apiKey'
+        '&with_genres=$genreId'
+        '&sort_by=popularity.desc'
+        '&vote_average.gte=6.5'
+        '&vote_count.gte=500'
+        '&page=$page'
+        '&language=tr-TR',
       );
 
       final response = await http.get(url);
@@ -36,7 +41,6 @@ class TMDBService {
     }
   }
 
-  /// Get movie details by ID
   Future<Movie> getMovieDetails(int movieId) async {
     try {
       final url = Uri.parse(
@@ -56,7 +60,6 @@ class TMDBService {
     }
   }
 
-  /// Get a random movie recommendation based on mood
   Future<Movie> getRandomMovieByMood({
     required String genre,
     required bool needsUplifting,
@@ -75,13 +78,11 @@ class TMDBService {
     return movies.first;
   }
 
-  /// Map mood/genre to TMDB genre ID
   int _getGenreId(String genre, bool needsUplifting) {
     final g = genre.toLowerCase();
 
-    // If uplift is requested and genre is unspecified/neutral, favor comedy
     if (needsUplifting && (g.isEmpty || g == 'drama')) {
-      return 35; // comedy
+      return 35;
     }
 
     switch (g) {

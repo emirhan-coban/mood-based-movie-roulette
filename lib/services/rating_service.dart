@@ -1,9 +1,8 @@
 import '../models/mood_analysis.dart';
 
-/// Lightweight category holder
 class _MoodCategory {
-  final String id; // display/summary
-  final String genre; // tmdb genre key
+  final String id;
+  final String genre;
   final List<String> keywords;
 
   const _MoodCategory({
@@ -13,9 +12,7 @@ class _MoodCategory {
   });
 }
 
-/// Service for keyword-based sentiment analysis
 class RatingService {
-  // Positive/negative keyword banks (short, bilingual)
   static const List<String> positiveKeywords = [
     'mutlu',
     'sevinçli',
@@ -86,7 +83,6 @@ class RatingService {
     'lonely',
   ];
 
-  // Mood categories mapped to target genres
   static const List<_MoodCategory> _categories = [
     _MoodCategory(
       id: 'Keyif & Komedi',
@@ -194,7 +190,6 @@ class RatingService {
         .replaceAll('Ç', 'C');
   }
 
-  /// Analyze mood based on user-selected keywords
   Future<MoodAnalysis> analyzeMoodFromSelectedKeywords(
     List<String> selectedKeywords,
   ) async {

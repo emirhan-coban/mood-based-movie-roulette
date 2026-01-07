@@ -11,17 +11,13 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Journal History'),
-      ),
+      appBar: AppBar(title: const Text('Journal History')),
       body: Consumer<AppStateProvider>(
         builder: (context, provider, child) {
           final entries = provider.journalHistory;
 
           if (entries.isEmpty) {
-            return const Center(
-              child: Text('No journal entries yet'),
-            );
+            return const Center(child: Text('No journal entries yet'));
           }
 
           return ListView.builder(
@@ -68,4 +64,3 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 }
-
