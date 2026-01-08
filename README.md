@@ -58,9 +58,9 @@ cd mood-based-movie-roulette
 flutter pub get
 ```
 
-3. **API Anahtarı Yapılandırması** (gerekiyorsa)
+3. **API Anahtarı Yapılandırması**
 
-Eğer proje bir film API'si kullanıyorsa, `.env` dosyası oluşturun:
+`.env` dosyası oluşturun:
 
 ```env
 MOVIE_API_KEY=your_api_key_here
